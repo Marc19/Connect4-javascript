@@ -1,0 +1,28 @@
+
+.container{
+  padding-top: 5%;
+  padding-bottom: 10%;
+  padding-left: 15%;
+  padding-right: 15%;
+}
+
+#gameTitle{
+  margin-bottom: 2vw;
+}
+
+.col{
+    background-color: blue;
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+}
+
+.chipHolder{
+  width: 4vw;
+  height: 4vw;
+  background-color: white;
+  border-radius: 100%;
+}
+
+.chipHolder:hover{
+  cursor: pointer;
+}

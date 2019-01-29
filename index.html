@@ -10,158 +10,59 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-</head>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+   </head>
 
 <body>
     <div class="container">
-        <h1 align="center" id="gameTitle">Connect 4</h1>
-        <div class="row r1">
-            <div class="col c1 px-0" align="center">
-                <div class= "chipHolder px-0 m-0">
 
-                </div>
+      <div id="gameMenu">
+         <div id= "playersNamesArea">
+            <div class= "playerName">
+               <label for="p1Name">Player 1 Name</label>
+               <input type="text" id="p1Name" placeholder="Enter name" >        
             </div>
-            <div class="col px-0 c2" align="center">
-               <div class= "chipHolder">                  </div>
+            <div class= "playerName">
+               <label for="p2Name">Player 2 Name</label>
+               <input type="text" id="p2Name" placeholder="Enter name" >     
             </div>
-            <div class="col px-0 c3" align="center">
-               <div class= "chipHolder">                  </div>
-            </div>
-            <div class="col px-0 c4" align="center">
-               <div class= "chipHolder">                  </div>
-            </div>
-            <div class="col px-0 c5" align="center">
-               <div class= "chipHolder">                  </div>
-            </div>
-            <div class="col px-0 c6" align="center">
-               <div class= "chipHolder">                  </div>
-            </div>
-            <div class="col px-0 c7" align="center">
-               <div class= "chipHolder">                  </div>
-            </div>
-        </div>
+         </div>
 
-        <div class="row r1">
-            <div class="col px-0 c1"  align="center">
-               <div class= "chipHolder">                  </div>
+         <div id="dimensionsArea">
+            <div class= "oneDimensionArea">
+               <label for="numOfRows">Number of rows: </label>
+               <input type="text" id="numOfRows" placeholder="(1-11)">
+               <label id= "rowErrorMsg" class="text-warning"></label> 
             </div>
-            <div class="col px-0 c2" align="center">
-               <div class= "chipHolder">                  </div>
+   
+            <div class= "oneDimensionArea">
+               <label for="numOfColumns">Number of columns: </label>
+               <input type="text" id="numOfColumns" placeholder="(1-12)"> 
+               <label id= "columnErrorMsg" class="text-warning"></label> 
             </div>
-            <div class="col px-0 c3" align="center">
-               <div class= "chipHolder">                  </div>
-            </div>
-            <div class="col px-0 c4" align="center">
-               <div class= "chipHolder">                  </div>
-            </div>
-            <div class="col px-0 c5" align="center">
-               <div class= "chipHolder">                  </div>
-            </div>
-            <div class="col px-0 c6" align="center">
-               <div class= "chipHolder">                  </div>
-            </div>
-            <div class="col px-0 c7" align="center">
-               <div class= "chipHolder">                  </div>
-            </div>
-        </div>
+         </div>
 
-        <div class="row r1">
-            <div class="col px-0 c1"  align="center">
-               <div class= "chipHolder">                  </div>
-            </div>
-            <div class="col px-0 c2" align="center">
-               <div class= "chipHolder">                  </div>
-            </div>
-            <div class="col px-0 c3" align="center">
-               <div class= "chipHolder">                  </div>
-            </div>
-            <div class="col px-0 c4" align="center">
-               <div class= "chipHolder">                  </div>
-            </div>
-            <div class="col px-0 c5" align="center">
-               <div class= "chipHolder">                  </div>
-            </div>
-            <div class="col px-0 c6" align="center">
-               <div class= "chipHolder">                  </div>
-            </div>
-            <div class="col px-0 c7" align="center">
-               <div class= "chipHolder">                  </div>
-            </div>
-        </div>
+         <button type="button" class="btn btn-dark" onclick="didPressStart()">Start game</button>
+      </div>
 
-        <div class="row r1">
-            <div class="col px-0 c1"  align="center">
-               <div class= "chipHolder">                  </div>
-            </div>
-            <div class="col px-0 c2" align="center">
-               <div class= "chipHolder">                  </div>
-            </div>
-            <div class="col px-0 c3" align="center">
-               <div class= "chipHolder">                  </div>
-            </div>
-            <div class="col px-0 c4" align="center">
-               <div class= "chipHolder">                  </div>
-            </div>
-            <div class="col px-0 c5" align="center">
-               <div class= "chipHolder">                  </div>
-            </div>
-            <div class="col px-0 c6" align="center">
-               <div class= "chipHolder">                  </div>
-            </div>
-            <div class="col px-0 c7" align="center">
-               <div class= "chipHolder">                  </div>
-            </div>
-        </div>
+         <!-- <h1 align="center" id="gameTitle">Connect 4</h1>
 
-        <div class="row r1">
-            <div class="col px-0 c1"  align="center">
-               <div class= "chipHolder">                  </div>
+         <div id= "connect4Grid">
+            <div class="row r1">
+               <div class="col c1 px-0" align="center">
+                  <div class= "chipHolder px-0 m-0">
+   
+                  </div>
+               </div>
             </div>
-            <div class="col px-0 c2" align="center">
-               <div class= "chipHolder">                  </div>
-            </div>
-            <div class="col px-0 c3" align="center">
-               <div class= "chipHolder">                  </div>
-            </div>
-            <div class="col px-0 c4" align="center">
-               <div class= "chipHolder">                  </div>
-            </div>
-            <div class="col px-0 c5" align="center">
-               <div class= "chipHolder">                  </div>
-            </div>
-            <div class="col px-0 c6" align="center">
-               <div class= "chipHolder">                  </div>
-            </div>
-            <div class="col px-0 c7" align="center">
-               <div class= "chipHolder">                  </div>
-            </div>
-        </div>
 
-        <div class="row r1">
-            <div class="col px-0 c1"  align="center">
-               <div class= "chipHolder">                  </div>
-            </div>
-            <div class="col px-0 c2" align="center">
-               <div class= "chipHolder">                  </div>
-            </div>
-            <div class="col px-0 c3" align="center">
-               <div class= "chipHolder">                  </div>
-            </div>
-            <div class="col px-0 c4" align="center">
-               <div class= "chipHolder">                  </div>
-            </div>
-            <div class="col px-0 c5" align="center">
-               <div class= "chipHolder">                  </div>
-            </div>
-            <div class="col px-0 c6" align="center">
-               <div class= "chipHolder">                  </div>
-            </div>
-            <div class="col px-0 c7" align="center">
-               <div class= "chipHolder">                  </div>
-            </div>
-        </div>
-
+         </div> -->
     </div>
+
 </body>
-            
+
+<script src="js/HTMLElements.js"></script>
+<script src="js/gameController.js"></script>
+<script src="js/builder.js"></script>
+
 </html>

@@ -16,28 +16,29 @@
 <body>
     <div class="container">
 
+       <h1 id= "gameTitle" align="center">Connect 4</h1>
       <div id="gameMenu">
          <div id= "playersNamesArea">
             <div class= "playerName">
                <label for="p1Name">Player 1 Name</label>
-               <input type="text" id="p1Name" placeholder="Enter name" >        
+               <input type="text" id="p1Name" placeholder="Enter name" value= "Marc">        
             </div>
             <div class= "playerName">
                <label for="p2Name">Player 2 Name</label>
-               <input type="text" id="p2Name" placeholder="Enter name" >     
+               <input type="text" id="p2Name" placeholder="Enter name" value= "Karim">     
             </div>
          </div>
 
          <div id="dimensionsArea">
             <div class= "oneDimensionArea">
                <label for="numOfRows">Number of rows: </label>
-               <input type="text" id="numOfRows" placeholder="(1-11)">
+               <input type="text" id="numOfRows" placeholder="(1-11)" value="5">
                <label id= "rowErrorMsg" class="text-warning"></label> 
             </div>
    
             <div class= "oneDimensionArea">
                <label for="numOfColumns">Number of columns: </label>
-               <input type="text" id="numOfColumns" placeholder="(1-12)"> 
+               <input type="text" id="numOfColumns" placeholder="(1-12)" value="7"> 
                <label id= "columnErrorMsg" class="text-warning"></label> 
             </div>
          </div>
@@ -45,18 +46,8 @@
          <button type="button" class="btn btn-dark" onclick="didPressStart()">Start game</button>
       </div>
 
-         <!-- <h1 align="center" id="gameTitle">Connect 4</h1>
-
-         <div id= "connect4Grid">
-            <div class="row r1">
-               <div class="col c1 px-0" align="center">
-                  <div class= "chipHolder px-0 m-0">
-   
-                  </div>
-               </div>
-            </div>
-
-         </div> -->
+      
+      
     </div>
 
 </body>

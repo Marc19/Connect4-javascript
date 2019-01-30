@@ -88,7 +88,9 @@ function prepareGame(p1Name, p2Name, numOfRows, numOfColumns){
 
 function draw(){
     if(gameModeGL == "start"){
-        
+        deleteEndMenu();
+        deleteGameGrid();
+        showStartMenu();
     }
     else if(gameModeGL == "playing"){
         hideStartMenu();
@@ -96,7 +98,8 @@ function draw(){
         startGame();        
     }
     else if(gameModeGL == "end"){
-        
+        disableGame();
+        drawEndGame();
     } 
 }
 
@@ -119,14 +122,77 @@ function playChip(column){
     if(theColumn.length < gameGridGL.rows){ // can insert
         theColumn.push(currentPlayerGL.color);
         redrawGrid();
-        checkIfWinner();
-        switchTurns();
+        if(!checkIfWinner())
+            switchTurns();
     }
     // console.log(gameGridGL.columnsObj);
 }
 
 function checkIfWinner(){
-    //TODO: connect 4 rules
+    if(checkVerticalWin() || checkHorizontalWin() || checkDiagonalWin()){
+        gameModeGL = 'end';
+        draw();
+        return true;
+    }
+    return false;
+}
+
+function checkVerticalWin(){
+    for(var i=0; i<gameGridGL.columns; i++){
+        var theColumn = gameGridGL.columnsObj["column"+i];
+        
+        for(var j=0; j<theColumn.length -3 ; j++){
+            
+            if( typeof theColumn[j] !== 'undefined' && theColumn[j] === theColumn[j+1] && 
+                theColumn[j] === theColumn[j+2] && theColumn[j] === theColumn[j+3]){
+                    return true;
+                }
+        }
+    }
+    return false;
+}
+
+function checkHorizontalWin(){
+    for(var i=0; i<gameGridGL.rows; i++){
+        for(var j=0; j<gameGridGL.columns -3; j++){
+            var col1 = gameGridGL.columnsObj["column"+j];
+            var col2 = gameGridGL.columnsObj["column"+(j+1)];
+            var col3 = gameGridGL.columnsObj["column"+(j+2)];
+            var col4 = gameGridGL.columnsObj["column"+(j+3)];
+            
+            if( typeof col1[i] !== 'undefined' && col1[i] === col2[i] && 
+                col1[i] === col3[i] && col1[i] === col4[i]){
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+function checkDiagonalWin(){
+    for(var i=0; i<gameGridGL.rows; i++){
+        for(var j=0; j<gameGridGL.columns -3; j++){
+            var col1 = gameGridGL.columnsObj["column"+j];
+            var col2 = gameGridGL.columnsObj["column"+(j+1)];
+            var col3 = gameGridGL.columnsObj["column"+(j+2)];
+            var col4 = gameGridGL.columnsObj["column"+(j+3)];
+            
+            if( typeof col1[i] !== 'undefined' && col1[i] === col2[i+1] && 
+                col1[i] === col3[i+2] && col1[i] === col4[i+3]){
+                return true;
+            }
+
+            if( i<3 ){
+                continue;
+            }
+
+            if( typeof col1[i] !== 'undefined' && col1[i] === col2[i-1] && 
+            col1[i] === col3[i-2] && col1[i] === col4[i-3]){
+                return true;
+            }
+        }
+    }
+    return false;
 }
 
 function switchTurns(){
@@ -137,4 +203,9 @@ function switchTurns(){
         currentPlayerGL = player1GL;
     }
     displayPlayersName();
+}
+
+function didPressPlayAgain(){
+    gameModeGL = 'start';
+    draw();
 }

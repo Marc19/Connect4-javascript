@@ -1,5 +1,9 @@
 function hideStartMenu(){
-    $("#gameMenu").hide();
+    $("#gameStartMenu").hide();
+}
+
+function showStartMenu(){
+    $("#gameStartMenu").show();
 }
 
 function drawGameGrid(){
@@ -20,15 +24,25 @@ function drawGameGrid(){
         gameData += rowDiv;
     }
     var gameDivCopy = gameDiv.replace("%data%", gameData);
-
+    var playerNameTurn = playerName.replace("%data", player1GL.name);
     $('.container').append(gameDivCopy);
+    $('.container').append(playerNameTurn);
+}
+
+function deleteGameGrid(){
+    $("#connect4Grid").remove();
+    $("#playerTurnH4").remove();
+}
+
+function deleteEndMenu(){
+    $("#gameEndMenu").remove();
+}
+
+function disableGame(){
+    $(".chipHolder").prop("onclick", null).off("click");
 }
 
 function displayPlayersName(){
-    if( $("#playerTurnH4").length == 0){
-        $('.container').append(playerName);
-    }
-
     var playerTurnH1 = $("#playerTurnH4");
     playerTurnH1.empty();
     playerTurnH1.append(currentPlayerGL.name + "'s turn");
@@ -37,5 +51,23 @@ function displayPlayersName(){
 }
 
 function redrawGrid(){
-    //TODO: Color filled entries from model
+    for(var i=0; i<gameGridGL.columns; i++){
+        var theColumn = gameGridGL.columnsObj["column"+i];
+        
+        for(var j=0; j<theColumn.length; j++){
+            var color = theColumn[j];
+            var rowNum = gameGridGL.rows - j -1;
+            var colNum = i;
+            var id = "ch" + rowNum + "" +  colNum;
+            
+            $("#" + id).css("background-color", color);
+        }
+    }
+}
+
+function drawEndGame(){
+    winnerIs = winnerH2.replace('%data%', currentPlayerGL.name);
+    gameEndMenu = gameEndMenuDiv.replace('%data%',winnerIs+playAgainButton);
+    
+    $(".container").append(gameEndMenu);
 }

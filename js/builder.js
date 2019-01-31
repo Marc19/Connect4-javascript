@@ -50,19 +50,14 @@ function displayPlayersName(){
     playerTurnH1.css("color", currentPlayerGL.color);
 }
 
-function redrawGrid(){
-    for(var i=0; i<gameGridGL.columns; i++){
-        var theColumn = gameGridGL.columnsObj["column"+i];
-        
-        for(var j=0; j<theColumn.length; j++){
-            var color = theColumn[j];
-            var rowNum = gameGridGL.rows - j -1;
-            var colNum = i;
-            var id = "ch" + rowNum + "" +  colNum;
-            
-            $("#" + id).css("background-color", color);
-        }
-    }
+function fillColor(clickedColumn){
+    var theColumn = gameGridGL.columnsObj["column"+clickedColumn];
+
+    var color = theColumn[theColumn.length - 1];
+    var rowNum = gameGridGL.rows - (theColumn.length);
+    var id = "ch" + rowNum + "" +  clickedColumn;
+    
+    $("#" + id).css("background-color", color);
 }
 
 function drawEndGame(){

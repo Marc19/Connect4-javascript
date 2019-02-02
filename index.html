@@ -21,39 +21,36 @@
          <div id= "playersNamesArea">
             <div class= "playerName">
                <label for="p1Name">Player 1 Name</label>
-               <input type="text" id="p1Name" placeholder="Enter name" value= "Marc">        
+               <input type="text" id="p1Name" placeholder="Enter name">        
             </div>
             <div class= "playerName">
                <label for="p2Name">Player 2 Name</label>
-               <input type="text" id="p2Name" placeholder="Enter name" value= "Karim">     
+               <input type="text" id="p2Name" placeholder="Enter name">     
             </div>
          </div>
 
          <div id="dimensionsArea">
             <div class= "oneDimensionArea">
                <label for="numOfRows">Number of rows: </label>
-               <input type="text" id="numOfRows" placeholder="(1-11)" value="5">
+               <input type="text" id="numOfRows" placeholder="(4-11)">
                <label id= "rowErrorMsg" class="text-warning"></label> 
             </div>
    
             <div class= "oneDimensionArea">
                <label for="numOfColumns">Number of columns: </label>
-               <input type="text" id="numOfColumns" placeholder="(1-12)" value="7"> 
+               <input type="text" id="numOfColumns" placeholder="(4-12)"> 
                <label id= "columnErrorMsg" class="text-warning"></label> 
             </div>
          </div>
 
-         <button type="button" class="btn btn-dark" onclick="didPressStart()">Start game</button>
+         <button type="button" id="startBtn" class="btn btn-dark">Start game</button>
       </div>
-
-      
-      
     </div>
 
 </body>
 
-<script src="js/HTMLElements.js"></script>
-<script src="js/gameController.js"></script>
-<script src="js/builder.js"></script>
+<script src="js/model.js"></script>
+<script src="js/view.js"></script>
+<script src="js/controller.js"></script>
 
 </html>
